@@ -39,3 +39,15 @@ def test_daily_max_integers():
     test_result = np.array([5, 6])
 
     npt.assert_array_equal(daily_max(test_input), test_result)
+
+import pytest
+@pytest.mark.parametrize(
+    "test, expected",
+    [
+        ([ [0, 0], [0, 0], [0, 0] ], [0, 0]),
+        ([ [1, 2], [3, 4], [5, 6] ], [3, 4]),
+    ])
+def test_daily_mean(test, expected):
+    """Test mean function works for array of zeroes and positive integers."""
+    from inflammation.models import daily_mean
+    npt.assert_array_equal(daily_mean(np.array(test)), np.array(expected))
